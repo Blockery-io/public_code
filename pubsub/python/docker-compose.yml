@@ -2,8 +2,12 @@ version: "3.9"
 services:
   subscriber:
     build: .
+    volumes:
+      - ./app:/app
     environment:
       SUBSCRIBE_KEY: "yourkey"
       UUID: "youruuid"
+      AUTH_KEY: "authkey"
       CHANNEL_NAME: "12345_request_results"
+      PYTHONPATH: "."
     command: python3 app/subscribe.py
