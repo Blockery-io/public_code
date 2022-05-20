@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  subscriber:
+    build: .
+    environment:
+      SUBSCRIBE_KEY: "yourkey"
+      UUID: "youruuid"
+      CHANNEL_NAME: "12345_request_results"
+    command: python3 app/subscribe.py

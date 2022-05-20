@@ -1,0 +1,6 @@
+.idea
+venv
+*.wallet
+mongodb_data_container/
+node-ipc/
+__pycache__
