@@ -4,3 +4,4 @@ venv
 mongodb_data_container/
 node-ipc/
 __pycache__
+node_modules
