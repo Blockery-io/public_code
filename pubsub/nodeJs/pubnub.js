@@ -7,7 +7,6 @@ const pubnub = new PubNub({
 })
 pubnub.addListener({
     status: async function (statusEvent) {
-        console.log(statusEvent)
         if (statusEvent.category === "PNConnectedCategory") {
             console.log("Connected to PubNub!")
         }
