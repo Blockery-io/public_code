@@ -7,7 +7,7 @@ See your organization dashboard for getting the subscribe key, auth key, and cha
 Modify `docker-compose.yml` by inserting appropriate values for the following environment variables: 
 
       SUBSCRIBE_KEY: "yourkey" (Get this on your org dashboard)
-      UUID: "youruuid" (An arbitrary value you can set to identify your app. Set to anything)
+      UUID: "youruuid" (Get this on your org dashboard)
       AUTH_KEY: "authkey" (Generate one of these via the Generate Token PubNub at https://app.blockery.io/organizations)
       CHANNEL_NAME: "12345_request_results" (Get this on your org dashboard)
 
