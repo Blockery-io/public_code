@@ -5,9 +5,9 @@ services:
     volumes:
       - ./app:/app
     environment:
-      SUBSCRIBE_KEY: "yourkey"
-      UUID: "youruuid"
-      AUTH_KEY: "authkey"
-      CHANNEL_NAME: "12345_request_results"
+      SUBSCRIBE_KEY: ${SUBSCRIBE_KEY}
+      UUID: ${UUID}
+      AUTH_KEY: ${AUTH_KEY}
+      CHANNEL_NAME: ${CHANNEL_NAME}
       PYTHONPATH: "."
     command: python3 app/subscribe.py
