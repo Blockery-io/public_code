@@ -7,6 +7,7 @@ See your organization dashboard for getting the subscribe key, auth key, and cha
 Bring it up by replacing the placeholder values in the below command with your real values:
 
 `SUBSCRIBE_KEY=yoursubscribekey UUID=youruuid AUTH_KEY=pubnubkey CHANNEL_NAME=yourchannelname docker-compose up
+
 ` 
 Explanation of the env vars:
 
