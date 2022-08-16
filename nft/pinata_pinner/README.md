@@ -20,7 +20,7 @@ you should extend this app to take advantage of parallel processing. If you do s
 2. Move all images you wish to pin into the directory `upload`. 
     Each set of images should be inside a subdirectory with a name identifying their collection.
     For example, for a collection named `SpacePuppies`, the images should be found at `pinata_pinner/upload/SpacePuppies`
-3. From the `pinata_pinner` directory, run the command `PINATA_API_KEY=insertyourkeyhere docker-compose up`
+3. From the `pinata_pinner` directory, run the command `PINATA_API_KEY=insertyourkeyhere MONGO_URI=mongodb://mongodb:27017 docker-compose up`
     Replace 'insertyourkeyhere' in the above command with your pinata api jwt.
 
 To view the data output by the app, simply connect to the mongo database. It will stay running until you
