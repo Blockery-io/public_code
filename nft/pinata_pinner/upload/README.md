@@ -1,0 +1,1 @@
+Copy all files you wish to upload to pinata into this directory.

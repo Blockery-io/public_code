@@ -1,8 +1,11 @@
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.pubnub import PubNub
+import pubnub
+import logging
 from app.subscribe_callback import MySubscribeCallback
 import os
 
+pubnub.set_stream_logger('pubnub', logging.DEBUG)
 pnconfig = PNConfiguration()
 pnconfig.subscribe_key = os.environ['SUBSCRIBE_KEY']
 pnconfig.uuid = os.environ['UUID']  # arbitrary value. used to identify the app.
@@ -14,5 +17,5 @@ print(f'Subscribing to channel <{channel_name}> with the following configuration
       f'Subscribe key: <{os.environ["SUBSCRIBE_KEY"]}>\n'
       f'UUID: <{os.environ["UUID"]}>\n'
       f'AUTH_KEY: <{os.environ["AUTH_KEY"]}>')
+
 pubnub.subscribe().channels(os.environ['CHANNEL_NAME']).execute()
-print('test')
