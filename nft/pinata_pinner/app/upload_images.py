@@ -17,28 +17,26 @@ def process_files(
     collection = db.nfts
     total_processed = 0
     print(f'Begin processing files')
-    for name in os.listdir(directory):
-        full_path = os.path.join(directory, name)
-        if os.path.isdir(full_path):
-            continue
-        elif os.path.isfile(full_path):
-            processed = process_file(full_path,
+    for root, dirs, files in os.walk(directory):
+        for name in files:
+            print(os.path.join(root, name))
+            processed = process_file(root,
+                                     name,
                                      collection,
                                      pinata_jwt)
             if processed:
                 total_processed += 1
                 print(f'Processed: {total_processed} images')
-        else:
-            print(f'Unidentified name {full_path}. It could be a symbolic link')
-    return
+    return total_processed
 
-
-def process_file(path: str,
+def process_file(root: str,
+                 name: str,
                  collection,
                  pinata_jwt: str):
     #validate file
+    path = f'{root}/{name}'
     filepath = os.fsdecode(path)
-    filename = os.path.basename(filepath)
+    nft_collection_name = os.path.basename(root)
     if not filepath.endswith(('.jpg', '.png')):
         return False
     else:
@@ -60,8 +58,9 @@ def process_file(path: str,
     if not res.ok:
         raise Exception(f'failed to upload to nft_drop storage with error: {res.text}')
     collection.insert_one({'ipfs_uri': f'ipfs://{res.json()["IpfsHash"]}',
-                            'image_filename': f'{filename}',
-                            'processed_at': datetime.datetime.utcnow()})
+                           'nft_collection_name': nft_collection_name,
+                           'image_filename': f'{name}',
+                           'processed_at': datetime.datetime.utcnow()})
 
 
     return True

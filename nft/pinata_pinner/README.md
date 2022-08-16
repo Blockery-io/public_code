@@ -17,7 +17,9 @@ you should extend this app to take advantage of parallel processing. If you do s
 
 ## Usage:
 1. Clone this repo
-2. Move all images you wish to pin into the directory `upload`
+2. Move all images you wish to pin into the directory `upload`. 
+    Each set of images should be inside a subdirectory with a name identifying their collection.
+    For example, for a collection named `SpacePuppies`, the images should be found at `pinata_pinner/upload/SpacePuppies`
 3. From the `pinata_pinner` directory, run the command `PINATA_API_KEY=insertyourkeyhere docker-compose up`
     Replace 'insertyourkeyhere' in the above command with your pinata api jwt.
 

@@ -10,8 +10,8 @@ def run_pinner():
     mongo_client = MongoClient(os.environ['MONGO_URI'])
     db = mongo_client.blockery_public
 
-    r = process_files(upload_directory, pinata_jwt, db)
-    print(r)
+    processed_images_count = process_files(upload_directory, pinata_jwt, db)
+    print(f'Total processed images: {processed_images_count}')
 
 if __name__ == "__main__":
     run_pinner()
