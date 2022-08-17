@@ -13,7 +13,7 @@ Bring it up by replacing the placeholder values in the below command with your r
 Explanation of the env vars:
 
       SUBSCRIBE_KEY: "yourkey" (Get this on your org dashboard)
-      UUID: "youruuid" (An arbitrary value you can set to identify your app. Set to anything)
+      UUID: "youruuid" (Get this on your org dashboard)
       AUTH_KEY: "authkey" (Generate one of these via the Generate Token PubNub at https://app.blockery.io/organizations)
       CHANNEL_NAME: "12345_request_results" (Get this on your org dashboard)
 
