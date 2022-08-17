@@ -1,4 +1,5 @@
-This app is an example of using the pubnub sdk to subscribe to blockery response channels. Your organizatio receives information related to requests you make in a response channel.
+This app is an example of using the pubnub sdk to subscribe to blockery event channels. 
+For example, the `request_response` channel provides your organization information related to requests you make to the api.
 
 See your organization dashboard for getting the subscribe key, auth key, and channel.
 
@@ -16,4 +17,4 @@ Explanation of the env vars:
       AUTH_KEY: "authkey" (Generate one of these via the Generate Token PubNub at https://app.blockery.io/organizations)
       CHANNEL_NAME: "12345_request_results" (Get this on your org dashboard)
 
-You will now see message streamed to the console when you make use of the public API at blockery.io
+You will now see messages streamed to the console when you make use of the public API at blockery.io
