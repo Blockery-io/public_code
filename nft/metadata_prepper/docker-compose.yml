@@ -1,16 +1,13 @@
 version: "3.9"
 services:
-  nft_minter:
+  metadata_app:
     build: .
     volumes:
       - ./app:/app
     environment:
-      BLOCKERY_API_KEY: ${BLOCKERY_API_KEY}
       MONGO_URI: "mongodb://mongodb:27017"
-      NFT_COLLECTION_NAME: ${NFT_COLLECTION_NAME}
-      BLOCKERY_API_URL: ${BLOCKERY_API_URL}
       PYTHONPATH: "."
-    command: python3 app/nft_minter.py
+    command: python3 app/metadata_prepper.py
   mongodb:
     container_name: mongodb
     image: mongo:5

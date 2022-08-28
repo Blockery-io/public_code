@@ -2,6 +2,7 @@ import requests
 import os
 from pymongo import MongoClient
 import datetime
+from pathlib import Path
 
 
 def process_files(
@@ -29,6 +30,7 @@ def process_files(
                 print(f'Processed: {total_processed} images')
     return total_processed
 
+
 def process_file(root: str,
                  name: str,
                  collection,
@@ -36,6 +38,7 @@ def process_file(root: str,
     #validate file
     path = f'{root}/{name}'
     filepath = os.fsdecode(path)
+    filestem = Path(filepath).stem
     nft_collection_name = os.path.basename(root)
     if not filepath.endswith(('.jpg', '.png')):
         return False
@@ -59,8 +62,9 @@ def process_file(root: str,
         raise Exception(f'failed to upload to nft_drop storage with error: {res.text}')
     collection.insert_one({'ipfs_uri': f'ipfs://{res.json()["IpfsHash"]}',
                            'nft_collection_name': nft_collection_name,
-                           'image_filename': f'{name}',
-                           'processed_at': datetime.datetime.utcnow()})
+                           'image_filename': name,
+                           'image_filestem': filestem,
+                           'image_pinned_at': datetime.datetime.utcnow()})
 
 
     return True

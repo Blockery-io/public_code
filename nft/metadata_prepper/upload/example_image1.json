@@ -1,0 +1,26 @@
+{
+    "name": "my_nft_name_001",
+    "receive_address": "addr_test1qrm3hjh30x3ffh5u8jch5n53n76fxdazpg0ejnjtuzgqg70djpltrn262hjuw3mhv4dr3l6wyd2n2m6nw58xnfywqhxqfa6c60",
+    "policy_id": "451882450d70e3ec27a87a6f3fe96514930af66aa85d8dac85a0bc6e",
+    "quantity": 1,
+    "metadata": {
+     "name": "my_nft_name_001",
+     "description": "This is a great asset we minted on blockery.io!",
+     "mediaType": "image/png",
+     "website": "https://blockery.io",
+     "twitter": "https://twitter.com/blockery_io",
+     "id": "001",
+     "image": "ipfs://Qma5x12e8gUeydJ9qVNPTt63JvNYPppCyrJ2FBzXoscG3h",
+     "files": [
+       {
+         "mediaType": "image/png",
+         "src": "ipfs://Qma5x12e8gUeydJ9qVNPTt63JvNYPppCyrJ2FBzXoscG3h",
+         "name": "my_nft_name_001"
+       }
+     ],
+     "attributes": {
+       "rarity": "common",
+       "color": "blue"
+     }
+    }
+   }

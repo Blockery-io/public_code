@@ -37,10 +37,16 @@ def run_minter():
     print(f'Total processed nfts: {total_processed_nfts}')
 
 def mint_nfts(nft_body):
-    url = os.environ['BLOCKERY_API_URL']
+    '''
+    Executes a single nft minting transaction which may contain a plurality of nfts.
+    :param nft_body:
+    :return:
+    '''
+    base_url = os.environ['BLOCKERY_API_URL']
     route = '/api/v1/nft'
     blockery_api_token = os.environ['BLOCKERY_API_KEY']
-    response = requests.post(url=url+route, json=nft_body, headers={'Authorization': f'bearer {blockery_api_token}'})
+    url = base_url + route
+    response = requests.post(url=url, json=nft_body, headers={'Authorization': f'Bearer {blockery_api_token}'})
     if not response.ok:
         raise Exception(response.json())
 

@@ -5,11 +5,19 @@ from pymongo import MongoClient
 import random
 import string
 
+
 class MyTestCase(unittest.TestCase):
     def test_run_minter(self):
+        '''
+        This test populates a the mongo db with documents describing 40 NFTs. It then
+        uses the nft minding function to mint those NFTs via blockery. The intention
+        of this test is to provide a concrete example of the entire lifecycle from
+        defining the NFTs in a database to actually minting them.
+        :return:
+        '''
         #prepare db
-        mongo_url = "mongodb://mongodb:27017"
-        mongo_url = "mongodb://localhost:27019"
+        mongo_url = "mongodb://mongodb:27017" #running in docker
+        mongo_url = "mongodb://localhost:27019" #running outside docker
         mongo_client = MongoClient(mongo_url)
 
         db = mongo_client.blockery_public
@@ -37,7 +45,7 @@ class MyTestCase(unittest.TestCase):
                             "mediaType": "image/png",
                             "website": "https://blockery.io",
                             "twitter": "https://twitter.com/blockery_io",
-                            "id": i,
+                            "id": f"{i}",
                             "image": "ipfs://QmWw9uCKktxt9DGtK6qYLRE7gWefSPsSjbUgvJGQsu84WQ",
                             "files": [
                                 {
