@@ -3,15 +3,15 @@ The NFT Minter is designed to interface with the blockery API. It will mint a nu
 It will handle the following:
 1. Mint NFTs defined in a local mongo database.
 2. Uses the images uploaded by the blockery project [Pinata Pinner](https://github.com/Blockery-io/public_code/tree/main/nft/pinata_pinner)
-
+3. Uses NFT descriptions prepared by the blockery project [Metadata Prepper](https://github.com/Blockery-io/public_code/tree/main/nft/metadata_prepper)
 
 ## Before using this utility you must have the following:
 1. An account with [blockery.io](https://www.blockery.io/).
 2. API keys for your blockery account. [Create Here](https://knowledge.pinata.cloud/en/articles/6191471-how-to-create-an-pinata-api-key).
 3. Install [docker](https://docs.docker.com/engine/install/) and `docker-compose` (comes with the desktop install).
 4. Mongodb containing descriptions of the nfts you wish to mint. 
-    You can use the [Pinata Pinner](https://github.com/Blockery-io/public_code/tree/main/nft/pinata_pinner) project to create these descriptions.
-
+    * You can use the [Pinata Pinner](https://github.com/Blockery-io/public_code/tree/main/nft/pinata_pinner) project to create these descriptions.
+    * You can use [Metadata Prepper](https://github.com/Blockery-io/public_code/tree/main/nft/metadata_prepper) to fill out the entries created by Pinata Pinner with full descriptions.
 
 ## Usage:
 1. Clone this repo

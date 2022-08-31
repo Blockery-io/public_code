@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  policy_creator_app:
+    build: .
+    volumes:
+      - ./app:/app
+    environment:
+      BLOCKERY_API_URL: ${BLOCKERY_API_URL}
+      BLOCKERY_API_KEY: ${BLOCKERY_API_KEY}
+      SLOT_EXPIRY: ${SLOT_EXPIRY}
+      EXPIRES_IN: ${EXPIRES_IN}
+      MONGO_URI: "mongodb://mongodb:27017"
+      PYTHONPATH: "."
+    command: python3 app/policy_creator.py
+  mongodb:
+    container_name: mongodb
+    image: mongo:5
+    ports:
+      - 27019:27017
+    volumes:
+      - ~/mongodb_data_container:/data/db

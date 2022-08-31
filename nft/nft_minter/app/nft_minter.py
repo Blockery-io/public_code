@@ -29,7 +29,7 @@ def run_minter():
                 mint_nfts(nft_transaction_body)
 
         page += 1
-        if total_results< 10: # we've reached the end of the pages of nft objects from the database, so let's mint that last batch even if there are less than 40
+        if total_results < 10: # we've reached the end of the pages of nft objects from the database, so let's mint that last batch even if there are less than 40
             unprocessed_nfts_remain = False
             if len(nft_transaction_body["assets_to_mint"]) >= 0:
                 mint_nfts(nft_transaction_body)
