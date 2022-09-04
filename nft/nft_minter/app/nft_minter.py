@@ -3,10 +3,9 @@ import os
 import requests
 from pymongo import MongoClient
 
-def run_minter():
-    mongo_client = MongoClient(os.environ['MONGO_URI'])
+def run_minter(blockery_api_token, base_url, mongo_uri, nft_collection_name):
+    mongo_client = MongoClient(mongo_uri)
     db = mongo_client.blockery_public
-    nft_collection_name = os.environ['NFT_COLLECTION_NAME']
 
     collection = db.nfts
     unprocessed_nfts_remain = True
@@ -26,29 +25,33 @@ def run_minter():
             total_results += 1
             nft_transaction_body["assets_to_mint"].append(nft['nft_body'])
             if len(nft_transaction_body["assets_to_mint"]) >= 40:
-                mint_nfts(nft_transaction_body)
+                mint_nfts(nft_transaction_body, blockery_api_token, base_url)
 
         page += 1
         if total_results < 10: # we've reached the end of the pages of nft objects from the database, so let's mint that last batch even if there are less than 40
             unprocessed_nfts_remain = False
             if len(nft_transaction_body["assets_to_mint"]) >= 0:
-                mint_nfts(nft_transaction_body)
+                mint_nfts(nft_transaction_body, blockery_api_token, base_url)
 
     print(f'Total processed nfts: {total_processed_nfts}')
 
-def mint_nfts(nft_body):
+def mint_nfts(nft_body, blockery_api_token, base_url):
     '''
     Executes a single nft minting transaction which may contain a plurality of nfts.
     :param nft_body:
     :return:
     '''
-    base_url = os.environ['BLOCKERY_API_URL']
+
     route = '/api/v1/nft'
-    blockery_api_token = os.environ['BLOCKERY_API_KEY']
+
     url = base_url + route
     response = requests.post(url=url, json=nft_body, headers={'Authorization': f'Bearer {blockery_api_token}'})
     if not response.ok:
         raise Exception(response.json())
 
 if __name__ == "__main__":
-    run_minter()
+    blockery_api_token = os.environ['BLOCKERY_API_KEY']
+    base_url = os.environ['BLOCKERY_API_URL']
+    mongo_uri = os.environ['MONGO_URI']
+    nft_collection_name = os.environ['NFT_COLLECTION_NAME']
+    run_minter(blockery_api_token, base_url, mongo_uri, nft_collection_name)

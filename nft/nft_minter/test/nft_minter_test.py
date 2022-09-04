@@ -23,11 +23,8 @@ class MyTestCase(unittest.TestCase):
         db = mongo_client.blockery_public
         nft_collection_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
 
-        os.environ['BLOCKERY_API_URL'] = "https://app-stage.blockery.io"
-        os.environ['NFT_COLLECTION_NAME'] = nft_collection_name
-        os.environ['MONGO_URI'] = mongo_url
         collection = db.nfts
-        for i in range(40):
+        for i in range(35):
             nft_name = f'{nft_collection_name}{i}'
             collection.insert_one({
                 'ipfs_uri': 'ipfs://QmWw9uCKktxt9DGtK6qYLRE7gWefSPsSjbUgvJGQsu84WQ',
@@ -36,8 +33,8 @@ class MyTestCase(unittest.TestCase):
                 'nft_body': #This structure is used to fill out the blockery api call. Should comply with the spec here: https://app.blockery.io/docs/public-api/v1#tag/nft
                     {
                         "name": nft_name,
-                        "receive_address": "addr_test1qrm3hjh30x3ffh5u8jch5n53n76fxdazpg0ejnjtuzgqg70djpltrn262hjuw3mhv4dr3l6wyd2n2m6nw58xnfywqhxqfa6c60",
-                        "policy_id": "451882450d70e3ec27a87a6f3fe96514930af66aa85d8dac85a0bc6e",
+                        "receive_address": "addr_test1qrpzs98ufjr6kw6nz60dcsf2eysaatvxu5aqwa0gn9ttmluk37rh6k3fddxqvhxa25yamn5keq6wpgfyndaadv7pyh6qe0y5ph",
+                        "policy_id": "d3224cdf20c6cae56d714ceb4f00c8dc8b66722e14f4a8fcd5e3cb62",
                         "quantity": 1,
                         "metadata": {
                             "name": nft_name,
@@ -62,7 +59,7 @@ class MyTestCase(unittest.TestCase):
                     }
             })
 
-        run_minter()
+        run_minter(os.environ['BLOCKERY_API_KEY'], "https://app-stage.blockery.io", mongo_url, nft_collection_name )
         self.assertEqual(True, False)  # add assertion here
 
 
