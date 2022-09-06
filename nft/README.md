@@ -5,3 +5,9 @@ Utilities:
 * `pinata_pinner` - Upload images to the ipfs service "pinata" for use in NFTs.
 * `metadata_prepper` - Prepares the metadata to be used by `nft_minter` for minting the nfts.
 * `nft_minter` - Mint NFTs using the Blockery API. Uses mongo entries from `pinata_pinner` and `metadata_prepper` as input.
+* `end_to_end` - This script will run all other utilities as an end-to-end package.
+
+
+## End_to_End
+
+This little script assumes you want to create one or more 

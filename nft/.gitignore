@@ -1,0 +1,4 @@
+*.jpg
+*.png
+!example_image1.png
+/build

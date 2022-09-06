@@ -34,7 +34,7 @@ class MyTestCase(unittest.TestCase):
                     {
                         "name": nft_name,
                         "receive_address": "addr_test1qrpzs98ufjr6kw6nz60dcsf2eysaatvxu5aqwa0gn9ttmluk37rh6k3fddxqvhxa25yamn5keq6wpgfyndaadv7pyh6qe0y5ph",
-                        "policy_id": "d3224cdf20c6cae56d714ceb4f00c8dc8b66722e14f4a8fcd5e3cb62",
+                        "policy_id": "3c06a87f05836e53f375019d9cde2a64e94b5f53381f7af913ef2990",
                         "quantity": 1,
                         "metadata": {
                             "name": nft_name,

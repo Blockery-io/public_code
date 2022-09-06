@@ -4,6 +4,7 @@ import requests
 from pymongo import MongoClient
 
 def run_minter(blockery_api_token, base_url, mongo_uri, nft_collection_name):
+    print('Spinning up nft_minter app...')
     mongo_client = MongoClient(mongo_uri)
     db = mongo_client.blockery_public
 
@@ -17,14 +18,14 @@ def run_minter(blockery_api_token, base_url, mongo_uri, nft_collection_name):
 	"assets_to_mint": []
     }
 
-
+    max_nfts_per_tx = 35
     while unprocessed_nfts_remain: # here we iterate over all nfts in the db and mint them 40 at a time. Doing many at a time saves onchain transaction fees.
-        result = collection.find({"nft_collection_name": nft_collection_name}).skip(page*40).limit(40)
+        result = collection.find({"nft_collection_name": nft_collection_name}).skip(page*max_nfts_per_tx).limit(max_nfts_per_tx)
         total_results = 0
         for nft in result:
             total_results += 1
             nft_transaction_body["assets_to_mint"].append(nft['nft_body'])
-            if len(nft_transaction_body["assets_to_mint"]) >= 40:
+            if len(nft_transaction_body["assets_to_mint"]) >= max_nfts_per_tx:
                 mint_nfts(nft_transaction_body, blockery_api_token, base_url)
 
         page += 1
@@ -32,6 +33,7 @@ def run_minter(blockery_api_token, base_url, mongo_uri, nft_collection_name):
             unprocessed_nfts_remain = False
             if len(nft_transaction_body["assets_to_mint"]) >= 0:
                 mint_nfts(nft_transaction_body, blockery_api_token, base_url)
+                total_processed_nfts += total_results
 
     print(f'Total processed nfts: {total_processed_nfts}')
 
