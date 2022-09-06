@@ -51,9 +51,9 @@ It will handle the following:
             }
 ```
 
-3. From the `nft_minter` directory, run the command `BLOCKERY_API_KEY=insertyourkeyhere BLOCKERY_API_URL=https://app-stage.blockery.io/ docker-compose up`
+3. From the `nft_minter` directory, run the command `BLOCKERY_API_KEY=insertyourkeyhere BLOCKERY_API_URL=https://app-stage.blockery.io docker-compose up`
     * Replace 'insertyourkeyhere' in the above command with your blockery api jwt.
-    * If you wish to use the main net instead of testnet, make sure to use `https://app.blockery.io/` for `BLOCKERY_API_URL`.
+    * If you wish to use the main net instead of testnet, make sure to use `https://app.blockery.io` for `BLOCKERY_API_URL`.
 
 As the app processes nfts, it will mark the documents with a timestamp under the field `nft_submitted`. 
 To view the data output by the app, simply connect to the mongo database. It will stay running until you

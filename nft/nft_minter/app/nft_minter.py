@@ -49,7 +49,7 @@ def mint_nfts(nft_body, blockery_api_token, base_url):
     url = base_url + route
     response = requests.post(url=url, json=nft_body, headers={'Authorization': f'Bearer {blockery_api_token}'})
     if not response.ok:
-        raise Exception(response.json())
+        raise Exception(str(response))
 
 if __name__ == "__main__":
     blockery_api_token = os.environ['BLOCKERY_API_KEY']

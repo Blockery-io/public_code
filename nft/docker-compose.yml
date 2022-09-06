@@ -3,7 +3,7 @@ services:
   end_to_end_app:
     build: .
     volumes:
-      - ./end_to_end:/app
+      - ./:/app
     environment:
       PINATA_API_KEY: ${PINATA_API_KEY}
       MONGO_URI: "mongodb://mongodb:27017"
@@ -11,7 +11,7 @@ services:
       NFT_COLLECTION_NAME: ${NFT_COLLECTION_NAME}
       BLOCKERY_API_URL: ${BLOCKERY_API_URL}
       PYTHONPATH: "."
-    command: python3 app/pinata_pinner.py
+    command: python3 app/end_to_end.py
   mongodb:
     container_name: mongodb
     image: mongo:5
