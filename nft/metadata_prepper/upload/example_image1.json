@@ -5,7 +5,7 @@
     "quantity": 1,
     "metadata": {
      "name": "my_nft_name_001",
-     "description": "This is a great asset we minted on blockery.io!",
+     "description": "This NFT was minted by blockery.io!",
      "mediaType": "image/png",
      "website": "https://blockery.io",
      "twitter": "https://twitter.com/blockery_io",
