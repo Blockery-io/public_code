@@ -30,3 +30,4 @@ You must have the following before using the app.
 2. From the `nft` directory, run the command `PINATA_API_KEY=insertyourkeyhere BLOCKERY_API_KEY=insertyourkeyhere BLOCKERY_API_URL=https://app-stage.blockery.io NFT_COLLECTION_NAME=directory_name_images_are_inside_within_upload_folder docker-compose up`
     Replace placeholders in the above with appropriate values.
 3. Once you see the log message `nft_end_to_end_app_1 exited with code 0` the program is complete. You can now safely shut down the compose with `cntrl + c` or whichever command is appropriate on your os.
+4. To see the feedback from blockery about whether the transaction succeeds, watch your `request_results` event channel using the [pubsub](https://github.com/Blockery-io/public_code/tree/main/pubsub/python) app.

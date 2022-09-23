@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  simple_transaction:
+    build: .
+    volumes:
+      - ./app:/app
+    environment:
+      BLOCKERY_API_KEY: ${BLOCKERY_API_KEY}
+      BLOCKERY_API_URL: ${BLOCKERY_API_URL}
+      RECEIVE_ADDRESS: ${RECEIVE_ADDRESS}
+      AMOUNT: ${AMOUNT}
+      PYTHONPATH: "."
+    command: python3 app/simple_transaction.py
