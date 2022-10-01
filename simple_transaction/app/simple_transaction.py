@@ -16,13 +16,13 @@ def simple_transaction(receive_address, amount, blockery_api_token, base_url):
         "outputs": [
             {
                 "receive_address": receive_address,
-                "lovelace_amount": amount
+                "lovelace_amount": int(amount)
             }
         ]
     }
     response = requests.post(url=url, json=tx_body, headers={'Authorization': f'Bearer {blockery_api_token}'})
     if not response.ok:
-        raise Exception(str(response))
+        raise Exception(response.content)
 
 if __name__ == "__main__":
     blockery_api_token = os.environ['BLOCKERY_API_KEY']
